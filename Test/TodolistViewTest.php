@@ -41,4 +41,4 @@
     $todolistView->removeTodolist();
   }
 
-  testViewRemoveTodolist();
+  testViewShowTodolist();
