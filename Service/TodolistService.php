@@ -9,7 +9,7 @@
     {
       public function showTodolist(): void;
       public function addTodolist(string $todo): void;
-      public function removeTodolist(int $number): bool;
+      public function removeTodolist(int $number): void;
     }
 
     class TodolistServiceImpl implements TodolistService
@@ -39,9 +39,15 @@
         echo "SUKSES MENAMBAH TODOLIST" . PHP_EOL;
       }
 
-      public function removeTodolist(int $number): bool
+      public function removeTodolist(int $number): void
       {
-
+        if($this->todolistRepository->remove($number))
+        {
+          echo "SUKSES MENGHAPUS TODOLIST" . PHP_EOL;
+        }else
+        {
+          echo "GAGAL MENGHAPUS TODOLIST" . PHP_EOL;
+        }
       }
     }
   }
