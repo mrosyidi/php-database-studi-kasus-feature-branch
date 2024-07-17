@@ -31,4 +31,14 @@
     $todolistView->addTodolist();
   }
 
-  testViewShowTodolist();
+  function testViewRemoveTodolist(): void
+  {
+    $connection = Database::getConnection();
+    $todolistRepository = new TodolistRepositoryImpl($connection);
+    $todolistService = new TodolistServiceImpl($todolistRepository);
+    $todolistView = new TodolistView($todolistService);
+    $todolistService->showTodolist();
+    $todolistView->removeTodolist();
+  }
+
+  testViewRemoveTodolist();
