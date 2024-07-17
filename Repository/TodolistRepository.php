@@ -47,7 +47,20 @@
 
       public function remove(int $number): bool
       {
+        $sql = "SELECT id FROM todolist WHERE id=?";
+        $statement = $this->connection->prepare($sql);
+        $statement->execute([$number]);
 
+        if($statement->fetch())
+        {
+          $sql = "DELETE FROM todolist WHERE id=?";
+          $statement = $this->connection->prepare($sql);
+          $statement->execute([$number]);
+          return true;
+        }else
+        {
+          return false;
+        }
       }
     }
   }
